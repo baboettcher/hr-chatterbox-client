@@ -1,34 +1,22 @@
-// YOUR CODE HERE:
-
-// GO HERE: http://parse.sfm8.hackreactor.com/chatterbox/classes/messages
-
-
-// use jQuery AJAX
-
-
-// API KEYS:
-
-/*
-
-“appId”: “72b8e073a4abde10221ce95f38ed1c63bd7f3d6b”, 
-“restAPIKey”: “cf1ce23a61e2a40702c347b7dc1e0af8c28f6c7a”
-
-
-*/
+// Why only 100.
+// Can we query the data based on username?;
 
 
 var message = {
-  username: 'shawndrost',
-  text: 'trololo',
-  roomname: '4chan'
+  text: '<script>alert("HELLO! YOU GOT TROLLED")</script>',
+  username: 'shawndrost'
 };
+
+
+
+
 
 
 
 $.ajax({
   // This is the url you should use to communicate with the parse API server.
-  url: 'http://parse.sfm8.hackreactor.com/chatterbox/classes/messages',
-  type: 'POST',
+  url: 'http://parse.sfm8.hackreactor.com/chatterbox/classes/messages/ObjEPqxoJJ',
+  type: 'PUT',
   data: JSON.stringify(message),
   contentType: 'application/json',
   success: function (data) {
@@ -39,4 +27,34 @@ $.ajax({
     console.error('chatterbox: Failed to send message', data);
   }
 });
+
+
+
+
+//http://docs.parseplatform.org/rest/guide/#relational-queries
+// The documents use cURL but it can be converted to ajax as seen belowm
+//--data-urlendcode(some query)
+
+
+
+/*//var query = 'order=createdAt'; // from the docs
+var limit = 'limit=10';// from the dox
+var query = 'where={"text":""}'; // from the docs
+var newText = '{"text":"some text"}';
+
+
+var settings = {
+  "url": "http://parse.sfm8.hackreactor.com/chatterbox/classes/messages/ObjEPqxoJJ",
+  "method": "PUT",
+  "Content-Type": "application/json",
+  "data": JSON.stringify(newText)
+//  "data": encodeURI(limit)
+}
+
+$.ajax(settings).done(function (response) {
+ console.log(response);
+/*  response.results.forEach(function(x){
+    console.log(x);
+  })*/
+//});*/
 
