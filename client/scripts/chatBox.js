@@ -1,6 +1,5 @@
   function pushScroll(){
   document.getElementById("chats").scrollTop = document.getElementById("chats").scrollHeight;
-
   }
 
   function queryInputKeyDown(event) {
@@ -14,16 +13,21 @@
     createQueryNode(value);
   }
 
-
+// Event listener for entering chat
 $(document).ready(function(){
+    // Gets all events on #q
+    var username = "anonymousss";
+     // gets value from #q
+
     $("#q").keyup(function(e){
+      // looks for key 13 up event -- also known as return key
     	if(e.keyCode === 13){
-    	var value = $("#q").val()
-    	console.log(value);
-      createLeftSideNode(value)
+      var text = $("#q").val();
+    	console.log(text);
+      app.send(username, text);
+      createLeftSideNode(text)
         $("#q").val("")
     	}
-
     });
 });
 
@@ -40,7 +44,7 @@ var createRightSideNode = function() {
     node.className = "clearfix right-align right card-panel white teal-text";
     node.innerHTML = "...";
     $('#chats').append(node);
-    pushScroll();
+ //   pushScroll();
     return node;
 
   }
@@ -49,6 +53,6 @@ var setResponseOnRightSideNode = function(response, node) {
     node.innerHTML = response ? response : "[empty response]";
     node.setAttribute('data-actual-response', response);
     var speaking = false;
-    pushScroll();
+//    pushScroll();
   }
 

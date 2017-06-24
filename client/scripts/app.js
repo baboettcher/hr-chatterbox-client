@@ -2,13 +2,14 @@
 // Can we query the data based on username?;
 var app = {
   init: function() {},
-  send: function() {
+  send: function(username, text) {
     // post request
+    console.log(currentRoom);
     var type = "POST";
     var data = {
-      username: 'Mel Brooks',
-      text: 'It\'s good to be the king',
-      roomname: 'lobby'
+      username: username,
+      text: text,
+      roomname: currentRoom
     };
     // call the function from here :)
     this.ajaxRunner(type, JSON.stringify(data));
@@ -30,6 +31,7 @@ var app = {
         rooms = data;
         // Add rooms to drop down menu
         cleanRooms(rooms);
+        app.clearMessages()
         $('.progress').hide();
         return data; // in place for specRunner
       },

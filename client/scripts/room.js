@@ -2,6 +2,7 @@
 // new file
 var rooms;
 var cleanedRooms = [];
+var currentRoom;
 
 $( document ).ready(function() {
   app.fetch(1000);
@@ -28,18 +29,37 @@ var cleanRooms = function(rooms){
   return room;
 }
 
+var timer = "";
+
+function StartTimerFunction(query){
+  timer = setInterval(function(){ app.fetchRooms(query) }, 10000);
+  return timer;
+}
+
+
+function myStopFunction() {
+    clearInterval(timer);
+}
 
 
 
   $( document ).on('click','.room-name',function(){
-  $('.progress').show();
-  var room = $(this).text();
-  console.log(room)
-  app.clearMessages()
-  var query = 'where={"roomname":"' + room + '"}'
-  var chat = app.fetchRooms(query);
-  })
+    myStopFunction();
+    // clear the setInterval timer
 
+    currentRoom = "";
+
+    $('.progress').show();
+    var room = $(this).text();
+    // this = li that was clicked
+
+    currentRoom = room;
+
+    var query = 'where={"roomname":"' + room + '"}'
+    // intial call to get comments onto to the page;
+    app.fetchRooms(query);
+    StartTimerFunction(query);
+  })
 
 
 
