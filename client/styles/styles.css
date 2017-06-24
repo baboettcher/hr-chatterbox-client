@@ -1,4 +1,4 @@
-body {
+/*body {
     background: #eee;
     text-align: center;
     padding: 0 25px;
@@ -87,4 +87,66 @@ form input[type=text] {
     color: #fff;
     background-color: #0090da;
 }
+*/
+
+
+
+
+
+    .clearfix {
+      clear: both;
+      font-size: 12px;
+      padding: 5px;
+      text-align: left;
+      max-width: 85%;
+      margin:5px;
+      color:black;
+    }
+
+
+    #chats {
+       height: 400px;
+       overflow-y: scroll;
+    }
+    .card {
+        background-color: white;
+        border: 2px solid teal;
+        border-radius: 10px;
+    }
+    #q{
+        color:black;
+    }
+
+    .brand-logo{
+      margin: 0 auto;
+
+    }
+
+    #addButton{
+      float:right;
+    }
+
+    .input-field {
+      color:black;
+    }
+
+    #new-room{
+      float:right;
+      margin-top: -10px;
+    }
+
+    #change-user {
+      Color:white !important;
+    }
+
+    .side-nav{
+        left:-31px !important;
+    }
+
+    .card-panel{
+        padding: 5px !important;
+        margin: 0.5rem 4px 1rem 4px !important;
+    }
+
+
 

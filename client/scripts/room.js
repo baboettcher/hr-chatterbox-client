@@ -5,7 +5,7 @@ var cleanedRooms = [];
 
 $( document ).ready(function() {
   app.fetch(1000);
-  setTimeout(function(){cleanRooms(rooms)}, 3000);
+  $(".button-collapse").sideNav();
 });
 
 
@@ -20,7 +20,7 @@ var cleanRooms = function(rooms){
   });
   var room =cleanedRooms.slice(1,10)
   room.forEach(y=>{
-    $('#roomList').append("<option>"+ y +"</option>")
+    $('#dropdown1').append('<li><a class="room-name" href="#!">'+ y +'</a></li>')
   })
   return room;
 }
@@ -28,18 +28,14 @@ var cleanRooms = function(rooms){
 
 
 
-$( document ).on('change','#roomList',function(){
-  // load the chats by filtering rooms to whatever is selected
-
-  // room looks for the id 'roomList' and then check which option is selected
-  // Then it gets only the selected options text
-  var room = $('#roomList option:selected').text();
+  $( document ).on('click','.room-name',function(){
+  $('.progress').show();
+  var room = $(this).text();
+  console.log(room)
+  app.clearMessages()
   var query = 'where={"roomname":"' + room + '"}'
   var chat = app.fetchRooms(query);
-  //console.log(chat);
-
-  // alert(room);
-})
+  })
 
 
 
