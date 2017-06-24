@@ -14,7 +14,7 @@ var app = {
     this.ajaxRunner(type, JSON.stringify(data));
   },
 
-
+  // First fetch -- get all data.
   fetch: function(num) {
     if (num === undefined) {
       num = 10;
@@ -26,14 +26,16 @@ var app = {
       data: limit, //JSON.stringify(message) // encodeURI(query)
       contentType: 'application/json',
       success: function(data) {
+        // Put data in rooms global
         rooms = data;
+        // Add rooms to drop down menu
         cleanRooms(rooms);
         $('.progress').hide();
-        return data;
+        return data; // in place for specRunner
       },
       error: function(data) {
         console.error('chatterbox: Callback error message', data);
-        return data;
+        return data; // in place for specRunner
       }
     });
   },
@@ -54,10 +56,10 @@ var app = {
       $('.progress').hide();
       response.results.forEach(x => {
         if (x.username === "anonymousss") {
-          createQueryNode(_.escape(x.text))
+          createLeftSideNode(_.escape(x.text))
         } else {
-      var responseNode = createResponseNode();
-      setResponseOnNode(_.escape(x.text), responseNode);
+      var responseNode = createRightSideNode();
+      setResponseOnRightSideNode(_.escape(x.text), responseNode);
         }
       })
       return response;

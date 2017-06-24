@@ -48,13 +48,18 @@
       <div class="nav-wrapper teal">
         <a class="brand-logo right" href="#!">Chat App</a> <a class="button-collapse" data-activates="mobile-demo" href="#"><i class="material-icons">menu</i></a>
         <ul class="left hide-on-med-and-down">
-          <li class="input-field" id="change-user"><i class="material-icons prefix">account_circle</i> <input class="validate" placeholder="Change User Name..." type="text"></li>
+          <li class="input-field" id="change-user">
+          <i class="material-icons prefix">account_circle</i>
+          <!--Change user name on nav bar -->
+          <input class="validate" placeholder="Change User Name..." type="text"></li>
         </ul>
         <div class="side-nav" id="mobile-demo" style="margin-left: 2em">
           <div class="input-field">
+          <!--Change user name using side menu -->
             <input class="validate" placeholder="Change User Name..." type="text">
           </div>
         </div>
+        <!--Progress bar - which comes from Materialize library-->
         <div class="progress">
           <div class="indeterminate"></div>
         </div>
@@ -71,8 +76,10 @@
           <div class="card-content white-text">
             <!-- Dropdown Trigger -->
             <div class="row">
-              <a class='dropdown-button btn darken-1 col s12 l4' data-activates='dropdown1' href='#'>Enter a room</a> <!-- Dropdown Structure -->
+              <a class='dropdown-button btn darken-1 col s12 l4' data-activates='dropdown1' href='#'>Enter a room</a>
+              <!-- Chat room dropdown -->
               <ul  class='dropdown-content' id='dropdown1'></ul>
+              <!-- Create new room -->
               <div class="input-field col s12 l6" id="new-room">
                 <input class="validate" id="icon_prefix" placeholder="Add New Room..." type="text">
               </div>
@@ -86,8 +93,10 @@
             <div class="card darken-1">
               <div class="card-content white-text">
                 <div class="input-field">
+                  <!--User chat input goes here -->
                   <input id="q" placeholder="Natter here..." type="text">
                 </div>
+                <!--Chat box content goes here -->
                 <div id="chats"></div>
               </div>
             </div>

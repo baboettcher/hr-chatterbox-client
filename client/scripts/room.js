@@ -9,6 +9,7 @@ $( document ).ready(function() {
 });
 
 
+// builds the dropdown
 var cleanRooms = function(rooms){
 
   rooms.results.forEach(x=>{
@@ -20,8 +21,10 @@ var cleanRooms = function(rooms){
   });
   var room =cleanedRooms.slice(1,10)
   room.forEach(y=>{
+    // adding li tags to the dropdown
     $('#dropdown1').append('<li><a class="room-name" href="#!">'+ y +'</a></li>')
   })
+
   return room;
 }
 
