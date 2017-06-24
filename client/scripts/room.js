@@ -4,8 +4,17 @@ var rooms;
 var cleanRooms;
 
 $( document ).ready(function() {
-  app.fetch(1000);
-  setTimeout(function(){console.log(cleanRooms(rooms))}, 1000);
+  app.fetch(5000);
+  setTimeout(function(){console.log(cleanRooms(rooms))}, 2000);
+
+
+
+
+
+
+
+
+
 });
 
 
@@ -17,8 +26,22 @@ var cleanRooms = function(rooms){
     element.text = _.escape(element.text);
   });
 
-  return rooms;
+
+  var roomList = _.unique(_.pluck(rooms.results, 'roomname'));
+
+  console.log(roomList.length);
+
+  return roomList;
 }
 
 
-// test
+
+
+
+
+
+/*
+$("form").submit(function(){
+    alert("Submitted");
+});
+*/
