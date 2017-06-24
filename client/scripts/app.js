@@ -23,16 +23,28 @@ var app = {
     "method": "GET",
     "data": encodeURI(limit)
     }
-
     $.ajax(settings).done(function (response) {
       ;
      rooms = response;
-     //response.results.forEach(function(x){
-      //  console.log(x.createdAt);
-      //})
     });
-
   },
+
+
+  fetchRooms: function(query){
+    var settings = {
+    "url": "http://parse.sfm8.hackreactor.com/chatterbox/classes/messages",
+    "method": "GET",
+    "data": encodeURI(query),
+    }
+    $.ajax(settings).done(function (response) {
+      ;
+    console.log(response)
+    return response;
+    });
+  },
+
+
+
 
   ajaxRunner: function(type, data){
 
@@ -43,6 +55,7 @@ var app = {
       data: data,//JSON.stringify(message) // encodeURI(query)
       contentType: 'application/json',
       success: function (data) {
+      //  cleanRooms(data)
         console.log('chatterbox: Callback success',data);
         return data;
       },
