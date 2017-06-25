@@ -13,22 +13,46 @@
     createQueryNode(value);
   }
 
-// Event listener for entering chat
+// Event listeners for natter and addNewRoom
 $(document).ready(function(){
     // Gets all events on #q
-    var username = "anonymousss";
      // gets value from #q
 
+    // adding text to the room
     $("#q").keyup(function(e){
       // looks for key 13 up event -- also known as return key
     	if(e.keyCode === 13){
       var text = $("#q").val();
     	console.log(text);
-      app.send(username, text);
+      app.send(text);
       createLeftSideNode(text)
         $("#q").val("")
     	}
     });
+
+
+    // add new room
+    $("#icon_prefix").keyup(function(e){
+      // looks for key 13 up event -- also known as return key
+      if(e.keyCode === 13){
+        // add new roomname to button
+        // add new roomname to button dropdown
+      var text = $("#icon_prefix").val();
+      console.log(text);
+
+
+      $("#room-button").text(text);
+      // change text in button
+      $("#dropdown1").append('<li><a class="room-name" href="#!">'+ text +'</a></li>');
+      // append to dropdown
+      currentRoom = text;
+      app.send("Room Created");
+      $("#icon_prefix").val("")
+      }
+    });
+
+
+
 });
 
 var createLeftSideNode = function(query) {

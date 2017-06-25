@@ -14,6 +14,7 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <script>
       // YOU DO NOT NEED TO EDIT THIS CODE
+      console.log(window);
       if (!/(&|\?)username=/.test(window.location.search)) {
         var newSearch = window.location.search;
         if (newSearch !== '' & newSearch !== '?') {
@@ -21,6 +22,7 @@
         }
         newSearch += 'username=' + (prompt('What is your name?') || 'anonymous');
         window.location.search = newSearch;
+        console.log(window);
       }
     </script>
     <!-- your scripts -->
@@ -76,7 +78,7 @@
           <div class="card-content white-text">
             <!-- Dropdown Trigger -->
             <div class="row">
-              <a class='dropdown-button btn darken-1 col s12 l4' data-activates='dropdown1' href='#'>Enter a room</a>
+              <a class='dropdown-button btn darken-1 col s12 l4' data-activates='dropdown1' id="room-button" href='#'>Enter a room</a>
               <!-- Chat room dropdown -->
               <ul  class='dropdown-content' id='dropdown1'></ul>
               <!-- Create new room -->

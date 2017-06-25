@@ -2,9 +2,10 @@
 // Can we query the data based on username?;
 var app = {
   init: function() {},
-  send: function(username, text) {
-    // post request
-    console.log(currentRoom);
+  send: function(text) {
+    // post reques//
+   //"?username=Jason"
+    console.log(username);
     var type = "POST";
     var data = {
       username: username,
@@ -56,8 +57,9 @@ var app = {
     }
     $.ajax(settings).done(function(response) {
       $('.progress').hide();
+      app.clearMessages();
       response.results.forEach(x => {
-        if (x.username === "anonymousss") {
+        if (x.username === username) {
           createLeftSideNode(_.escape(x.text))
         } else {
       var responseNode = createRightSideNode();

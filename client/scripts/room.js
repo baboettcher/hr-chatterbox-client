@@ -3,9 +3,11 @@
 var rooms;
 var cleanedRooms = [];
 var currentRoom;
+var username = window.location.search.substring(10);
+
 
 $( document ).ready(function() {
-  app.fetch(1000);
+  app.fetch(5000);
   $(".button-collapse").sideNav();
 });
 
@@ -20,7 +22,7 @@ var cleanRooms = function(rooms){
     }
 
   });
-  var room =cleanedRooms.slice(1,10)
+  var room =cleanedRooms.sort()//slice(1,10)
   room.forEach(y=>{
     // adding li tags to the dropdown
     $('#dropdown1').append('<li><a class="room-name" href="#!">'+ y +'</a></li>')
@@ -42,7 +44,7 @@ function myStopFunction() {
 }
 
 
-
+  // click hander to set the room
   $( document ).on('click','.room-name',function(){
     myStopFunction();
     // clear the setInterval timer
@@ -54,7 +56,7 @@ function myStopFunction() {
     // this = li that was clicked
 
     currentRoom = room;
-
+    $('#room-button').text(currentRoom);
     var query = 'where={"roomname":"' + room + '"}'
     // intial call to get comments onto to the page;
     app.fetchRooms(query);
